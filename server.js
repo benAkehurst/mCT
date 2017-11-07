@@ -9,15 +9,21 @@ app.use(bodyParser.json());
 app.use(express.static(__dirname));
 
 app.get("/scrapeTlv", function(req,res){
-    tlv = "https://www.timeanddate.com/weather/israel/tel-aviv";
+    tlv = "https://www.accuweather.com/en/il/tel-aviv/215854/current-weather/215854";
     request(tlv, function(err, resp, html) {
         if (!err){
             const $ = cheerio.load(html);
-            const loc = $('h1').text();
-            const temp = $('.h2').text();
-            const humidity = $('#qfacts > p').text();
-            const obj = {location: loc, temp: temp, humidity:humidity};
-            console.log(JSON.stringify(obj));
+            const otherData = [];
+            const loc = "Tel Aviv, Israel";
+            const temp = $('.forecast > .info > .temp > .large-temp').text();
+            const currentConditions = $('.forecast > .info > .cond').text();
+            $('.more-info > .stats > li').each(function(i, elem) {
+                otherData[i] = $(this).text();
+            });
+            otherData.join(', ');
+            const obj = {location: loc, temp: temp, currentConditions: currentConditions, otherData:otherData};
+            // console.log(JSON.stringify(obj));
+            // console.log(second);
             res.send({tlv:obj});
         }
         else{
@@ -30,11 +36,12 @@ app.get("/scrapeLdn", function(req,res){
     request(ldn, function(err, resp, html) {
         if (!err){
             const $ = cheerio.load(html);
-            const loc = $('h1').text();
-            const temp = $('.h2').text();
+            const loc = $('.fixed > h1').text();
+            const temp = $('#qlook > .h2').text();
+            const wind = $('#qlook > p').text();
             const humidity = $('#qfacts > p').text();
-            const obj = {location: loc, temp: temp, humidity:humidity};
-            console.log(JSON.stringify(obj));
+            const obj = {location: loc, temp: temp, wind:wind, humidity:humidity};
+            // console.log(JSON.stringify(obj));
             res.send({ldn:obj});
         }
         else{
