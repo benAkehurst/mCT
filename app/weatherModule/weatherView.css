@@ -59,3 +59,8 @@ html, body
     background-size: cover;
     background-repeat: no-repeat;
 }
+.ldn_weather{
+    background-image: url("/assets/img/londonImage.jpeg");
+    background-size: cover;
+    background-repeat: no-repeat;
+}

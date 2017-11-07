@@ -15,11 +15,23 @@
                 url: '/scrapeTlv'
             }).then(function success(response) {
                 weatherResults.push(response.data);
+                scrapeLdn();
             }, function error(response) {
                 console.log(response.statusText);
             });
         };
         $scope.init();
+
+        var scrapeLdn = function(){
+            $http({
+                method: "GET",
+                url: '/scrapeLdn'
+            }).then(function success(response) {
+                weatherResults.push(response.data);
+            }, function error(response) {
+                console.log(response.statusText);
+            });
+        }
 
         console.log(weatherResults);
 

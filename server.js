@@ -32,16 +32,21 @@ app.get("/scrapeTlv", function(req,res){
     });
 });
 app.get("/scrapeLdn", function(req,res){
-    ldn = "https://www.timeanddate.com/weather/uk/london";
+    ldn = "https://www.accuweather.com/en/gb/london/ec4a-2/current-weather/328328";
     request(ldn, function(err, resp, html) {
         if (!err){
             const $ = cheerio.load(html);
-            const loc = $('.fixed > h1').text();
-            const temp = $('#qlook > .h2').text();
-            const wind = $('#qlook > p').text();
-            const humidity = $('#qfacts > p').text();
-            const obj = {location: loc, temp: temp, wind:wind, humidity:humidity};
+            const otherData = [];
+            const loc = "London, United Kingdom";
+            const temp = $('.forecast > .info > .temp > .large-temp').text();
+            const currentConditions = $('.forecast > .info > .cond').text();
+            $('.more-info > .stats > li').each(function(i, elem) {
+                otherData[i] = $(this).text();
+            });
+            otherData.join(', ');
+            const obj = {location: loc, temp: temp, currentConditions: currentConditions, otherData:otherData};
             // console.log(JSON.stringify(obj));
+            // console.log(second);
             res.send({ldn:obj});
         }
         else{
