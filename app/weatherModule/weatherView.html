@@ -46,23 +46,28 @@
                 <div class="select_cities_buttons">
                     <button ng-repeat="button in cityButtons track by $index"
                             class="btn btn-info select_city_button"
-                            ng-click="cityButtonSearch(button.url, button.city)">{{button.city}}</button>
+                            ng-click="cityButtonSearch(button.url, button.city, button.imgUrl)">{{button.city}}</button>
                 </div>
             </div>
             <div class='weather_container'>
-                <div class='col-xs-12 col-sm-6 col-md-6 col-lg-6' ng-repeat="buttonCity in buttonWeather track by $index">
+                <div class='col-xs-12 col-sm-6 col-md-6 col-lg-6'
+                     ng-repeat="buttonCity in buttonWeather track by $index"
+                     ng-class="{button_city : buttonCity}"
+                     ng-hide="!buttonWeather.length"
+                     ng-style="{'background-image':'url(/assets/img{{buttonCity.imgUrl}})'}">
+                    <i class="fa fa-times remove_button" aria-hidden="true" ng-click="$scope.removeWeatherCity()"></i>
                     <div class='box_title'>
-                        <h1>{{buttonWeather.location}}</h1>
+                        <h1>{{buttonCity.location}}</h1>
                     </div>
                     <div class='box_temp'>
-                        <h1>{{buttonWeather.temp}}</h1>
+                        <h1>{{buttonCity.temp}}</h1>
                     </div>
                     <div class='box_icon'>
-                        <h3>{{buttonWeather.currentConditions}}</h3>
+                        <h3>{{buttonCity.currentConditions}}</h3>
                     </div>
                     <div class='box_details'>
-                        <h3>Wind: {{buttonWeather.otherData[1]}}</h3>
-                        <h3>{{buttonWeather.otherData[2]}}</h3>
+                        <h3>Wind: {{buttonCity.otherData[1]}}</h3>
+                        <h3>{{buttonCity.otherData[2]}}</h3>
                     </div>
                 </div>
             </div>

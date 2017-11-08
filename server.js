@@ -57,12 +57,14 @@ app.get("/scrapeLdn", function(req,res){
 app.post("/weatherButton", function(req,res){
     var data = {
         searchUrl:req.body.url,
-        cityName:req.body.cityName
+        cityName:req.body.cityName,
+        imgUrl:req.body.imgUrl
     };
     request(data.searchUrl, function(err, resp, html) {
         if (!err){
             const $ = cheerio.load(html);
             const otherData = [];
+            const imgUrl = data.imgUrl;
             const loc = data.cityName;
             const temp = $('.forecast > .info > .temp > .large-temp').text();
             const currentConditions = $('.forecast > .info > .cond').text();
@@ -70,7 +72,7 @@ app.post("/weatherButton", function(req,res){
                 otherData[i] = $(this).text();
             });
             otherData.join(', ');
-            const obj = {location: loc, temp: temp, currentConditions: currentConditions, otherData:otherData};
+            const obj = {location: loc, temp: temp, currentConditions: currentConditions, otherData:otherData, imgUrl:imgUrl};
             // console.log(JSON.stringify(obj));
             // console.log(second);
             res.send(obj);
