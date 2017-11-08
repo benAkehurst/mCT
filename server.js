@@ -54,6 +54,32 @@ app.get("/scrapeLdn", function(req,res){
         }
     });
 });
+app.post("/weatherButton", function(req,res){
+    var data = {
+        searchUrl:req.body.url,
+        cityName:req.body.cityName
+    };
+    request(data.searchUrl, function(err, resp, html) {
+        if (!err){
+            const $ = cheerio.load(html);
+            const otherData = [];
+            const loc = data.cityName;
+            const temp = $('.forecast > .info > .temp > .large-temp').text();
+            const currentConditions = $('.forecast > .info > .cond').text();
+            $('.more-info > .stats > li').each(function(i, elem) {
+                otherData[i] = $(this).text();
+            });
+            otherData.join(', ');
+            const obj = {location: loc, temp: temp, currentConditions: currentConditions, otherData:otherData};
+            // console.log(JSON.stringify(obj));
+            // console.log(second);
+            res.send(obj);
+        }
+        else{
+            console.log(err);
+        }
+    });
+});
 
 app.listen(4200,function(){
     console.log("Running on http://localhost:4200");
