@@ -12,12 +12,12 @@
         $scope.buttonWeather = buttonWeather;
 
         $scope.cityButtons = [
-            {city:'New York City', url:'https://www.accuweather.com/en/us/new-york-ny/10007/current-weather/349727', imgUrl:'/nycImage.jpeg'},
-            {city:'Los Angeles', url:'https://www.accuweather.com/en/us/los-angeles-ca/90012/current-weather/347625', imgUrl:'/losAngelesImage.jpeg'},
-            {city:'Paris', url:'https://www.accuweather.com/en/fr/paris/623/current-weather/623', imgUrl:'/parisImage.jpeg'},
-            {city:'Tokyo', url:'https://www.accuweather.com/en/jp/tokyo/226396/current-weather/226396', imgUrl:'/tokyoImage.jpeg'},
+            {city:'New York City, USA', url:'https://www.accuweather.com/en/us/new-york-ny/10007/current-weather/349727', imgUrl:'/nycImage.jpeg'},
+            {city:'Los Angeles, USA', url:'https://www.accuweather.com/en/us/los-angeles-ca/90012/current-weather/347625', imgUrl:'/losAngelesImage.jpeg'},
+            {city:'Paris, France', url:'https://www.accuweather.com/en/fr/paris/623/current-weather/623', imgUrl:'/parisImage.jpeg'},
+            {city:'Tokyo, Japan', url:'https://www.accuweather.com/en/jp/tokyo/226396/current-weather/226396', imgUrl:'/tokyoImage.jpeg'},
             {city:'Hong Kong', url:'https://www.accuweather.com/en/hk/hong-kong/1123655/current-weather/1123655', imgUrl:'/hongKongImage.jpeg'},
-            {city:'Sydney', url:'https://www.accuweather.com/en/au/sydney/22889/current-weather/22889', imgUrl:'/sydneyImage.jpeg'}
+            {city:'Sydney, Australia', url:'https://www.accuweather.com/en/au/sydney/22889/current-weather/22889', imgUrl:'/sydneyImage.jpeg'}
 
         ];
 

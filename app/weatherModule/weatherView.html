@@ -2,9 +2,9 @@
 
 <!-- Page Container   -->
 <nav class="navbar navbar-inverse navbar-static-top">
-    <div class="container">
+    <div class="container menu_items">
         <div class="cities_buttons_container pull-left">
-            <h1 class="page_title">World Weather</h1>
+            <h2 class="page_title">World Weather</h2>
             <div class="select_cities_buttons">
                 <button ng-repeat="button in cityButtons track by $index"
                         class="btn btn-default navbar-btn select_city_button"
@@ -12,9 +12,11 @@
                 </button>
             </div>
         </div>
-        <div class="search_city pull-right">
-            <input class="search_city_input" type="text" placeholder="Search another location" ng-model="searchCityText"  ng-keydown="$event.keyCode === 13 && searchCity(searchCityText)">
-            <i ng-model="searchCityText" ng-click="searchCity(searchCityText)" class="fa fa-search city_search_icon" aria-hidden="true"></i>
+        <div class="search_city">
+            <div class="search_city_input_container">
+                <input class="search_city_input" type="text" placeholder="Search another location" ng-model="searchCityText"  ng-keydown="$event.keyCode === 13 && searchCity(searchCityText)">
+                <i ng-model="searchCityText" ng-click="searchCity(searchCityText)" class="fa fa-search city_search_icon" aria-hidden="true"></i>
+            </div>
         </div>
     </div>
 </nav>

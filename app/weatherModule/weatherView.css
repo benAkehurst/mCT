@@ -5,22 +5,34 @@ html, body
     padding: 0;
     background-color:#f7f8f0;
 }
+.cities_buttons_container{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-content: flex-start;
+}
+.select_cities_buttons{
+    align-self: center;
+}
+.select_city_button{
+    margin: 0 10px 0 10px;
+    border-radius: 0!important;
+    height: 40px;
+}
 .page_title{
     color: #ffffff;
 }
-
 .search_city_input,
 .search_city_input::-webkit-input-placeholder {
     font-size: 20px;
     padding: 0 0 0 5px;
 }
-
 .search_city_input {
-    width: 19vw;
+    width: 310px;
     height: 40px;
-    margin: 13px 0px 0px 0px;
+    margin: 0px 0px 10px 0px;
 }
-
 .city_search_icon{
     color: #ffffff;
     font-size: 2em;
@@ -53,23 +65,19 @@ html, body
 }
 
 .box_title{
-    /*border: 1px solid black;*/
     width:100%;
     height:25%;
 }
 .box_temp{
-    /*border: 1px solid black;*/
     width:100%;
     height:25%;
 }
 .box_icon{
-    /*border: 1px solid black;*/
     width:50%;
     height:50%;
     float: left;
 }
 .box_details{
-    /*border: 1px solid black;*/
     width:50%;
     height:50%;
     float: right;
@@ -84,21 +92,6 @@ html, body
     background-image: url("/assets/img/londonImage.jpeg");
     background-size: cover;
     background-repeat: no-repeat;
-}
-.cities_buttons_container{
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    justify-content: center;
-    align-content: flex-start;
-}
-.select_cities_buttons{
-    align-self: center;
-}
-.select_city_button{
-    margin: 0 10px 0 10px;
-    border-radius: 0!important;
-    height: 40px;
 }
 
 .button_city{
