@@ -15,7 +15,7 @@
                         <h1>{{weatherResults[0].tlv.location}}</h1>
                     </div>
                     <div class='box_temp'>
-                        <h1>{{weatherResults[0].tlv.temp}}C</h1>
+                        <h1>{{weatherResults[0].tlv.temp}}</h1>
                     </div>
                     <div class='box_icon'>
                         <h3>{{weatherResults[0].tlv.currentConditions}}</h3>
@@ -30,7 +30,7 @@
                         <h1>{{weatherResults[1].ldn.location}}</h1>
                     </div>
                     <div class='box_temp'>
-                        <h1>{{weatherResults[1].ldn.temp}}C</h1>
+                        <h1>{{weatherResults[1].ldn.temp}}</h1>
                     </div>
                     <div class='box_icon'>
                         <h3>{{weatherResults[1].ldn.currentConditions}}</h3>
@@ -55,7 +55,7 @@
                      ng-class="{button_city : buttonCity}"
                      ng-hide="!buttonWeather.length"
                      ng-style="{'background-image':'url(/assets/img{{buttonCity.imgUrl}})'}">
-                    <i class="fa fa-times remove_button" aria-hidden="true" ng-click="$scope.removeWeatherCity()"></i>
+                    <i class="fa fa-times remove_button" aria-hidden="true" ng-click="removeWeatherCity($index)"></i>
                     <div class='box_title'>
                         <h1>{{buttonCity.location}}</h1>
                     </div>
