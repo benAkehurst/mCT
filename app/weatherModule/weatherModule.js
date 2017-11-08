@@ -4,7 +4,7 @@
 
     var weatherModule = angular.module("weatherModule", []);
 
-    weatherModule.controller("WeatherController", function($http, $scope, $rootScope, $location) {
+    weatherModule.controller("WeatherController", function($http, $scope, $timeout) {
 
         var weatherResults = [];
         var buttonWeather = [];
@@ -16,12 +16,13 @@
             {city:'Los Angeles', url:'https://www.accuweather.com/en/us/los-angeles-ca/90012/current-weather/347625', imgUrl:'/losAngelesImage.jpeg'},
             {city:'Paris', url:'https://www.accuweather.com/en/fr/paris/623/current-weather/623', imgUrl:'/parisImage.jpeg'},
             {city:'Tokyo', url:'https://www.accuweather.com/en/jp/tokyo/226396/current-weather/226396', imgUrl:'/tokyoImage.jpeg'},
-            {city:'Hong Kong', url:'https://www.accuweather.com/en/hk/hong-kong/1123655/current-weather/1123655', imgUrl:'/hongKongImage.jpeg'}
+            {city:'Hong Kong', url:'https://www.accuweather.com/en/hk/hong-kong/1123655/current-weather/1123655', imgUrl:'/hongKongImage.jpeg'},
+            {city:'Sydney', url:'https://www.accuweather.com/en/au/sydney/22889/current-weather/22889', imgUrl:'/sydneyImage.jpeg'}
+
         ];
 
 
-
-        $scope.init = function(){
+        var getWeather = function(){
             $http({
                 method: "GET",
                 url: '/scrapeTlv'
@@ -32,7 +33,6 @@
                 console.log(response.statusText);
             });
         };
-        $scope.init();
 
         var scrapeLdn = function(){
             $http({
@@ -44,6 +44,8 @@
                 console.log(response.statusText);
             });
         };
+
+        getWeather();
 
         $scope.cityButtonSearch = function(url,cityName,imgUrl){
             var data = {
@@ -60,13 +62,11 @@
             }, function error(response) {
                 console.log(response.statusText);
             });
-        }
+        };
 
         $scope.removeWeatherCity = function(index){
             $scope.buttonWeather.splice(index, 1);
-        }
-
-        // console.log(weatherResults);
+        };
 
     });
 
