@@ -3,9 +3,21 @@
 <!-- Page Container   -->
 <nav class="navbar navbar-inverse navbar-static-top">
     <div class="container">
-        <h1 class="page_title">World Weather</h1>
+        <div class="cities_buttons_container pull-left">
+            <h1 class="page_title">World Weather</h1>
+            <div class="select_cities_buttons">
+                <button ng-repeat="button in cityButtons track by $index"
+                        class="btn btn-info select_city_button"
+                        ng-click="cityButtonSearch(button.url, button.city, button.imgUrl)">{{button.city}}
+                </button>
+            </div>
+        </div>
+        <div class="search_city pull-right">
+            <input class="search_city_input" type="text" placeholder="Search another location">
+        </div>
     </div>
 </nav>
+
 <div class='container-fluid'>
     <div class='row'>
         <div class='app_container'>
@@ -42,13 +54,6 @@
                 </div>
             </div>
 
-            <div class="cities_buttons_container">
-                <div class="select_cities_buttons">
-                    <button ng-repeat="button in cityButtons track by $index"
-                            class="btn btn-info select_city_button"
-                            ng-click="cityButtonSearch(button.url, button.city, button.imgUrl)">{{button.city}}</button>
-                </div>
-            </div>
             <div class='weather_container'>
                 <div class='col-xs-12 col-sm-6 col-md-6 col-lg-6'
                      ng-repeat="buttonCity in buttonWeather track by $index"

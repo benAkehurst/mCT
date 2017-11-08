@@ -9,6 +9,18 @@ html, body
     color: #ffffff;
 }
 
+.search_city_input,
+.search_city_input::-webkit-input-placeholder {
+    font-size: 20px;
+    padding: 0 0 0 5px;
+}
+
+.search_city_input {
+    width: 23vw;
+    height: 40px;
+    margin: 13px 0px 0px 0px;
+}
+
 .weather_container{
     display: flex;
     flex-direction: row;
