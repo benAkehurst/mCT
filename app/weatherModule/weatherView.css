@@ -64,3 +64,18 @@ html, body
     background-size: cover;
     background-repeat: no-repeat;
 }
+.cities_buttons_container{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-content: flex-start;
+}
+.select_cities_buttons{
+    align-self: center;
+}
+.select_city_button{
+    margin: 0 10px 0 10px;
+    border-radius: 0!important;
+    height: 40px;
+}
