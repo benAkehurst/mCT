@@ -64,6 +64,10 @@
             });
         };
 
+        $scope.searchCity = function(name){
+            console.log(name);
+        };
+
         $scope.removeWeatherCity = function(index){
             $scope.buttonWeather.splice(index, 1);
         };

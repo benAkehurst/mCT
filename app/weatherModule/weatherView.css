@@ -16,9 +16,18 @@ html, body
 }
 
 .search_city_input {
-    width: 23vw;
+    width: 19vw;
     height: 40px;
     margin: 13px 0px 0px 0px;
+}
+
+.city_search_icon{
+    color: #ffffff;
+    font-size: 2em;
+    padding: 0 0 0 10px;
+}
+.city_search_icon:hover{
+    cursor: pointer;
 }
 
 .weather_container{
