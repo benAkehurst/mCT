@@ -90,11 +90,13 @@
         };
 
         $scope.searchCity = function (name) {
+            $('.search_city_input').val('');
             $.simpleWeather({
                 location: name,
                 unit: 'c',
                 success: function (weather) {
-                    var obj = {location: weather.city, temp: weather.temp + '°', currentConditions: weather.currently, wind:weather.wind.speed + 'km/h', humidity:weather.humidity + '%'};
+                    var bgColor = randomColor();
+                    var obj = {location: weather.city, temp: weather.temp + '°', currentConditions: weather.currently, wind:weather.wind.speed + 'km/h', humidity:weather.humidity + '%', backgorundColor: bgColor};
                     searchedWeather.push(obj);
                 },
                 error: function (error) {
@@ -106,6 +108,15 @@
         $scope.removeWeatherCity = function (index) {
             $scope.buttonWeather.splice(index, 1);
         };
+        $scope.removeWeatherSearchedCity = function (index) {
+            $scope.searchedWeather.splice(index, 1);
+        };
+
+        function randomColor(){
+            var arr = ['#1abc9c','#27ae60','#e74c3c','#8e44ad','#34495e','#c0392b','#f1c40f','#16a085','#f39c12','#9b59b6','#3498db'];
+            var randomColor = arr[Math.floor(Math.random() * arr.length)];
+            return randomColor;
+        }
 
     });
 

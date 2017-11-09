@@ -56,7 +56,6 @@
                     </div>
                 </div>
             </div>
-
             <div class='weather_container'>
                 <div class='col-xs-12 col-sm-6 col-md-6 col-lg-6'
                      ng-repeat="buttonCity in buttonWeather track by $index"
@@ -76,6 +75,28 @@
                     <div class='box_details'>
                         <h3>Wind: {{buttonCity.otherData[1]}}</h3>
                         <h3>{{buttonCity.otherData[2]}}</h3>
+                    </div>
+                </div>
+            </div>
+            <div class='searched_weather_container'>
+                <div class='col-xs-12 col-sm-6 col-md-6 col-lg-6'
+                     ng-repeat="searchedCity in searchedWeather track by $index"
+                     ng-class="{searched_city : searchedCity}"
+                     ng-hide="!searchedWeather.length"
+                     ng-style="{'background-color':'{{searchedCity.backgorundColor}}'}">
+                    <i class="fa fa-times remove_button" aria-hidden="true" ng-click="removeWeatherSearchedCity($index)"></i>
+                    <div class='box_title'>
+                        <h1>{{searchedCity.location}}</h1>
+                    </div>
+                    <div class='box_temp'>
+                        <h1>{{searchedCity.temp}}</h1>
+                    </div>
+                    <div class='box_icon'>
+                        <h3>{{searchedCity.currentConditions}}</h3>
+                    </div>
+                    <div class='box_details'>
+                        <h3>Wind: {{searchedCity.wind}}</h3>
+                        <h3>Humidity: {{searchedCity.humidity}}</h3>
                     </div>
                 </div>
             </div>
