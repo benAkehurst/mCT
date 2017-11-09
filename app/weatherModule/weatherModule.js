@@ -1,28 +1,53 @@
-(function() {
+(function () {
 
     'use strict';
 
     var weatherModule = angular.module("weatherModule", []);
 
-    weatherModule.controller("WeatherController", function($http, $scope, $timeout) {
+    weatherModule.controller("WeatherController", function ($http, $scope, $timeout) {
 
         var weatherResults = [];
         var buttonWeather = [];
+        var searchedWeather = [];
         $scope.weatherResults = weatherResults;
         $scope.buttonWeather = buttonWeather;
+        $scope.searchedWeather = searchedWeather;
 
         $scope.cityButtons = [
-            {city:'New York City, USA', url:'https://www.accuweather.com/en/us/new-york-ny/10007/current-weather/349727', imgUrl:'/nycImage.jpeg'},
-            {city:'Los Angeles, USA', url:'https://www.accuweather.com/en/us/los-angeles-ca/90012/current-weather/347625', imgUrl:'/losAngelesImage.jpeg'},
-            {city:'Paris, France', url:'https://www.accuweather.com/en/fr/paris/623/current-weather/623', imgUrl:'/parisImage.jpeg'},
-            {city:'Tokyo, Japan', url:'https://www.accuweather.com/en/jp/tokyo/226396/current-weather/226396', imgUrl:'/tokyoImage.jpeg'},
-            {city:'Hong Kong', url:'https://www.accuweather.com/en/hk/hong-kong/1123655/current-weather/1123655', imgUrl:'/hongKongImage.jpeg'},
-            {city:'Sydney, Australia', url:'https://www.accuweather.com/en/au/sydney/22889/current-weather/22889', imgUrl:'/sydneyImage.jpeg'}
+            {
+                city: 'New York City, USA',
+                url: 'https://www.accuweather.com/en/us/new-york-ny/10007/current-weather/349727',
+                imgUrl: '/nycImage.jpeg'
+            },
+            {
+                city: 'Los Angeles, USA',
+                url: 'https://www.accuweather.com/en/us/los-angeles-ca/90012/current-weather/347625',
+                imgUrl: '/losAngelesImage.jpeg'
+            },
+            {
+                city: 'Paris, France',
+                url: 'https://www.accuweather.com/en/fr/paris/623/current-weather/623',
+                imgUrl: '/parisImage.jpeg'
+            },
+            {
+                city: 'Tokyo, Japan',
+                url: 'https://www.accuweather.com/en/jp/tokyo/226396/current-weather/226396',
+                imgUrl: '/tokyoImage.jpeg'
+            },
+            {
+                city: 'Hong Kong',
+                url: 'https://www.accuweather.com/en/hk/hong-kong/1123655/current-weather/1123655',
+                imgUrl: '/hongKongImage.jpeg'
+            },
+            {
+                city: 'Sydney, Australia',
+                url: 'https://www.accuweather.com/en/au/sydney/22889/current-weather/22889',
+                imgUrl: '/sydneyImage.jpeg'
+            }
 
         ];
 
-
-        var getWeather = function(){
+        var getWeather = function () {
             $http({
                 method: "GET",
                 url: '/scrapeTlv'
@@ -34,7 +59,7 @@
             });
         };
 
-        var scrapeLdn = function(){
+        var scrapeLdn = function () {
             $http({
                 method: "GET",
                 url: '/scrapeLdn'
@@ -47,16 +72,16 @@
 
         getWeather();
 
-        $scope.cityButtonSearch = function(url,cityName,imgUrl){
+        $scope.cityButtonSearch = function (url, cityName, imgUrl) {
             var data = {
-                url:url,
-                cityName:cityName,
-                imgUrl:imgUrl
+                url: url,
+                cityName: cityName,
+                imgUrl: imgUrl
             };
             $http({
                 method: "POST",
                 url: '/weatherButton',
-                data:data
+                data: data
             }).then(function success(response) {
                 buttonWeather.push(response.data);
             }, function error(response) {
@@ -64,11 +89,21 @@
             });
         };
 
-        $scope.searchCity = function(name){
-            console.log(name);
+        $scope.searchCity = function (name) {
+            $.simpleWeather({
+                location: name,
+                unit: 'c',
+                success: function (weather) {
+                    var obj = {location: weather.city, temp: weather.temp + '°', currentConditions: weather.currently, wind:weather.wind.speed + 'km/h', humidity:weather.humidity + '%'};
+                    searchedWeather.push(obj);
+                },
+                error: function (error) {
+                    console.log("Error: " + error);
+                }
+            });
         };
 
-        $scope.removeWeatherCity = function(index){
+        $scope.removeWeatherCity = function (index) {
             $scope.buttonWeather.splice(index, 1);
         };
 
