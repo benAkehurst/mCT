@@ -7,7 +7,7 @@
             <h2 class="page_title">World Weather</h2>
             <div class="select_cities_buttons">
                 <button ng-repeat="button in cityButtons track by $index"
-                        class="btn btn-default navbar-btn select_city_button"
+                        class="navbar-btn select_city_button"
                         ng-click="cityButtonSearch(button.url, button.city, button.imgUrl)">{{button.city}}
                 </button>
             </div>
@@ -82,7 +82,6 @@
                 <div class='col-xs-12 col-sm-6 col-md-6 col-lg-6'
                      ng-repeat="searchedCity in searchedWeather track by $index"
                      ng-class="{searched_city : searchedCity}"
-                     ng-hide="!searchedWeather.length"
                      ng-style="{'background-color':'{{searchedCity.backgorundColor}}'}">
                     <i class="fa fa-times remove_button" aria-hidden="true" ng-click="removeWeatherSearchedCity($index)"></i>
                     <div class='box_title'>

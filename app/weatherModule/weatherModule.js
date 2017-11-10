@@ -4,7 +4,7 @@
 
     var weatherModule = angular.module("weatherModule", []);
 
-    weatherModule.controller("WeatherController", function ($http, $scope, $timeout) {
+    weatherModule.controller("WeatherController", function ($http, $scope) {
 
         var weatherResults = [];
         var buttonWeather = [];
@@ -15,22 +15,22 @@
 
         $scope.cityButtons = [
             {
-                city: 'New York City, USA',
+                city: 'NYC',
                 url: 'https://www.accuweather.com/en/us/new-york-ny/10007/current-weather/349727',
                 imgUrl: '/nycImage.jpeg'
             },
             {
-                city: 'Los Angeles, USA',
+                city: 'Los Angeles',
                 url: 'https://www.accuweather.com/en/us/los-angeles-ca/90012/current-weather/347625',
                 imgUrl: '/losAngelesImage.jpeg'
             },
             {
-                city: 'Paris, France',
+                city: 'Paris',
                 url: 'https://www.accuweather.com/en/fr/paris/623/current-weather/623',
                 imgUrl: '/parisImage.jpeg'
             },
             {
-                city: 'Tokyo, Japan',
+                city: 'Tokyo',
                 url: 'https://www.accuweather.com/en/jp/tokyo/226396/current-weather/226396',
                 imgUrl: '/tokyoImage.jpeg'
             },
@@ -40,7 +40,7 @@
                 imgUrl: '/hongKongImage.jpeg'
             },
             {
-                city: 'Sydney, Australia',
+                city: 'Sydney',
                 url: 'https://www.accuweather.com/en/au/sydney/22889/current-weather/22889',
                 imgUrl: '/sydneyImage.jpeg'
             }

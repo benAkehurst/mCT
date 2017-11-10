@@ -15,11 +15,31 @@ html, body
 .select_cities_buttons{
     align-self: center;
 }
+
 .select_city_button{
-    margin: 0 10px 0 10px;
-    border-radius: 0!important;
+    outline:none;
     height: 40px;
+    text-align: center;
+    width: 95px;
+    background: #fff;
+    border: grey;
+    color:#222222;
+    letter-spacing:1px;
+    font-size:12px;
+    font-weight:bold;
+    cursor: pointer;
+    transition: all 0.25s ease;
+    margin: 0 5px 0 5px;
 }
+.select_city_button:hover {
+     color:white;
+     background: #222222;
+ }
+.select_city_button:active {
+    letter-spacing: 2px;
+ }
+
+
 .page_title{
     color: #ffffff;
 }
